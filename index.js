@@ -145,6 +145,15 @@ class Instructor extends Lambdasian{
   grade(student, subject){
     return `${student.name} receives a perfect score on ${subject}`;
   }
+  addGrade(student){
+    const newScore = Math.floor(Math.random()*10);
+    const sign = Math.random() < 0.5;
+    if(sign){
+      student.grade += newScore;
+    }else{
+      student.grade -= newScore;
+    }
+  }
 }
 
 /*
@@ -168,6 +177,7 @@ class Student extends Lambdasian{
     this.previousBackground = attr.previousBackground;
     this.className = attr.className;
     this.favSubjects = attr.favSubjects;
+    this.grade = 50;
   }
   listSubjects(){
     let subString = "";
@@ -186,6 +196,13 @@ class Student extends Lambdasian{
   }
   sprintChallenge(subject){
     return `${this.name} has begun sprint challenge on ${subject}`
+  }
+  canGraduate(){
+    if (this.grade >= 70){
+      return `Your current grade is ${this.grade}. Congratulations, you can graduate!`;
+    }else {
+      return `Your current grade is ${this.grade}. Keep working, you're not quite ready to graduate!`
+    }
   }
 }
 
@@ -224,6 +241,42 @@ class ProjectManager extends Instructor{
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+// Stretch Problem Check
+// const me = new Student({
+//   name: "Gina",
+//   age: 51,
+//   location: 'Kentucky',
+//   previousBackground: 'teacher',
+//   className: "webpt22",
+//   favSubjects:['HTML', 'CSS', "JavaScript"]
+// });
+
+// console.log(me);
+// console.log(me.speak());
+
+// const brit = new Instructor({
+//   name: "Brit Hemming",
+//   age: 34,
+//   location: 'Canada',
+//   specialty: 'Intro to JavaScript',
+//   favLanguage: 'JavaScript',
+//   catchPhrase: 'Clear, Save, Run! or Winky, sad, neckbeard man!'
+// });
+
+// console.log(brit);
+// console.log(brit.speak());
+
+// brit.addGrade(me);
+// console.log(me.grade);
+
+// brit.addGrade(me);
+// brit.addGrade(me);
+// brit.addGrade(me);
+// brit.addGrade(me);
+// brit.addGrade(me);
+// brit.addGrade(me);
+// brit.addGrade(me);
+// console.log(me.canGraduate());
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
